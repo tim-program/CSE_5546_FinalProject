@@ -1,0 +1,4 @@
+5546projectvenv/*
+traintestval_pipeline/data/*
+**/__pycache__/*
+.vscode/*
