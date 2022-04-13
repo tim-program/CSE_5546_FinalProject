@@ -1,0 +1,289 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenSlideNET.Interop</name>
+    </assembly>
+    <members>
+        <member name="T:OpenSlideNET.Interop.OpenSlideInterop">
+            <summary>
+            The interop helpler for OpenSlide.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetAssociatedImageNames(OpenSlideNET.Interop.OpenSlideImageSafeHandle)">
+            <summary>
+            Get the NULL-terminated array of associated image names. 
+            Certain vendor-specific associated images may exist within a whole slide image. They are encoded as key-value pairs. This call provides a list of names as strings that can be used to read associated images with openslide_get_associated_image_dimensions() and openslide_read_associated_image().
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <returns>A NULL-terminated string array of associated image names, or an empty array if an error occurred.</returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetAssociatedImageDimensions(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.String,System.Int64@,System.Int64@)">
+            <summary>
+            Get the dimensions of an associated image. 
+            This function returns the width and height of an associated image associated with a whole slide image. Once the dimensions are known, use openslide_read_associated_image() to read the image.
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="name">The name of the desired associated image. Must be a valid name as given by openslide_get_associated_image_names().</param>
+            <param name="w">The width of the associated image, or -1 if an error occurred.</param>
+            <param name="h">The height of the associated image, or -1 if an error occurred.</param>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.ReadAssociatedImage(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.String,System.Void*)">
+            <summary>
+            Copy pre-multiplied ARGB data from an associated image. 
+            This function reads and decompresses an associated image associated with a whole slide image. dest must be a valid pointer to enough memory to hold the image, at least (width * height * 4) bytes in length. Get the width and height with openslide_get_associated_image_dimensions(). This call does nothing if an error occurred.
+            </summary>
+            <param name="osr">The OpenSlide object. </param>
+            <param name="name">The name of the desired associated image. Must be a valid name as given by openslide_get_associated_image_names().</param>
+            <param name="dest">The destination buffer for the ARGB data.</param>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.DetectVendor(System.String)">
+            <summary>
+            Quickly determine whether a whole slide image is recognized. 
+            If OpenSlide recognizes the file referenced by filename, return a string identifying the slide format vendor. This is equivalent to the value of the OPENSLIDE_PROPERTY_NAME_VENDOR property. Calling openslide_open() on this file will return a valid OpenSlide object or an OpenSlide object in error state.
+            Otherwise, return NULL. Calling openslide_open() on this file will also return NULL.
+            </summary>
+            <param name="filename">The filename to check.</param>
+            <returns>An identification of the format vendor for this file, or NULL.</returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.Open(System.String)">
+            <summary>
+            Open a whole slide image. 
+            This function can be expensive; avoid calling it unnecessarily. For example, a tile server should not call openslide_open() on every tile request. Instead, it should maintain a cache of OpenSlide objects and reuse them when possible.
+            </summary>
+            <param name="filename">The filename to open.</param>
+            <returns>On success, a new OpenSlide object. If the file is not recognized by OpenSlide, NULL. If the file is recognized but an error occurred, an OpenSlide object in error state.</returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetLevelCount(OpenSlideNET.Interop.OpenSlideImageSafeHandle)">
+            <summary>
+            Get the number of levels in the whole slide image. 
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <returns>The number of levels, or -1 if an error occurred.</returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetLevel0Dimensions(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Int64@,System.Int64@)">
+            <summary>
+            Get the dimensions of level 0 (the largest level). 
+            Exactly equivalent to calling openslide_get_level_dimensions(osr, 0, w, h).
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="w">The width of the image, or -1 if an error occurred.</param>
+            <param name="h">The height of the image, or -1 if an error occurred.</param>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetLevelDimensions(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Int32,System.Int64@,System.Int64@)">
+            <summary>
+            Get the dimensions of a level. 
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="level">The desired level.</param>
+            <param name="w">The width of the image, or -1 if an error occurred or the level was out of range.</param>
+            <param name="h">The height of the image, or -1 if an error occurred or the level was out of range.</param>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetLevelDownsample(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Int32)">
+            <summary>
+            Get the downsampling factor of a given level. 
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="level">The desired level.</param>
+            <returns>The downsampling factor for this level, or -1.0 if an error occurred or the level was out of range. </returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetBestLevelForDownsample(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Double)">
+            <summary>
+            Get the best level to use for displaying the given downsample. 
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="downsample">The downsample factor.</param>
+            <returns>The level identifier, or -1 if an error occurred.</returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.ReadRegion(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Void*,System.Int64,System.Int64,System.Int32,System.Int64,System.Int64)">
+            <summary>
+            Copy pre-multiplied ARGB data from a whole slide image. 
+            This function reads and decompresses a region of a whole slide image into the specified memory location. dest must be a valid pointer to enough memory to hold the region, at least (w * h * 4) bytes in length. If an error occurs or has occurred, then the memory pointed to by dest will be cleared.
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+            <param name="dest">The destination buffer for the ARGB data.</param>
+            <param name="x">The top left x-coordinate, in the level 0 reference frame.</param>
+            <param name="y">The top left y-coordinate, in the level 0 reference frame.</param>
+            <param name="level">The desired level.</param>
+            <param name="w">The width of the region. Must be non-negative.</param>
+            <param name="h">The height of the region. Must be non-negative.</param>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.Close(System.IntPtr)">
+            <summary>
+            Close an OpenSlide object. 
+            No other threads may be using the object. After this call returns, the object cannot be used anymore.
+            </summary>
+            <param name="osr">The OpenSlide object.</param>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameComment">
+            <summary>
+            The name of the property containing a slide's comment, if any. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameComment">
+            <summary>
+            The name of the property containing a slide's comment, if any. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameVendor">
+            <summary>
+            The name of the property containing an identification of the vendor. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameVendor">
+            <summary>
+            The name of the property containing an identification of the vendor. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameQuickHash1">
+            <summary>
+            The name of the property containing the "quickhash-1" sum. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameQuickHash1">
+            <summary>
+            The name of the property containing the "quickhash-1" sum. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameBackgroundColor">
+            <summary>
+            The name of the property containing a slide's background color, if any.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameBackgroundColor">
+            <summary>
+            The name of the property containing a slide's background color, if any.
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameObjectivePower">
+            <summary>
+            The name of the property containing a slide's objective power, if known. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameObjectivePower">
+            <summary>
+            The name of the property containing a slide's objective power, if known. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameMPPX">
+            <summary>
+            The name of the property containing the number of microns per pixel in the X dimension of level 0, if known.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameMPPX">
+            <summary>
+            The name of the property containing the number of microns per pixel in the X dimension of level 0, if known.
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameMPPY">
+            <summary>
+            The name of the property containing the number of microns per pixel in the Y dimension of level 0, if known.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameMPPY">
+            <summary>
+            The name of the property containing the number of microns per pixel in the Y dimension of level 0, if known.
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameBoundsX">
+            <summary>
+            The name of the property containing the X coordinate of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameBoundsX">
+            <summary>
+            The name of the property containing the X coordinate of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameBoundsY">
+            <summary>
+            The name of the property containing the Y coordinate of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameBoundsY">
+            <summary>
+            The name of the property containing the Y coordinate of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameBoundsWidth">
+            <summary>
+            The name of the property containing the width of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameBoundsWidth">
+            <summary>
+            The name of the property containing the width of the rectangle bounding the non-empty region of the slide, if available. 
+            </summary>
+        </member>
+        <member name="F:OpenSlideNET.Interop.OpenSlideInterop.OpenSlidePropertyNameBoundsHeight">
+            <summary>
+            The name of the property containing the height of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideInterop.Utf8OpenSlidePropertyNameBoundsHeight">
+            <summary>
+            The name of the property containing the height of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetVersion">
+            <summary>
+            Get the version of the OpenSlide library.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetError(OpenSlideNET.Interop.OpenSlideImageSafeHandle)">
+            <summary>
+            Get the current error string. 
+            For a given OpenSlide object, once this function returns a non-NULL value, the only useful operation on the object is to call openslide_close() to free its resources.
+            </summary>
+            <param name="osr">The OpenSlide object. </param>
+            <returns>A string describing the original error that caused the problem, or NULL if no error has occurred. </returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetPropertyNames(OpenSlideNET.Interop.OpenSlideImageSafeHandle)">
+            <summary>
+            Get the NULL-terminated array of property names. 
+            Certain vendor-specific metadata properties may exist within a whole slide image. They are encoded as key-value pairs. This call provides a list of names as strings that can be used to read properties with openslide_get_property_value().
+            </summary>
+            <param name="osr">The OpenSlide object. </param>
+            <returns>A NULL-terminated string array of property names, or an empty array if an error occurred. </returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetPropertyValue(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.String)">
+            <summary>
+            Get the value of a single property. 
+            Certain vendor-specific metadata properties may exist within a whole slide image. They are encoded as key-value pairs. This call provides the value of the property given by name.
+            </summary>
+            <param name="osr">The OpenSlide object. </param>
+            <param name="name">The name of the desired property. Must be a valid name as given by openslide_get_property_names().</param>
+            <returns>The value of the named property, or NULL if the property doesn't exist or an error occurred. </returns>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideInterop.GetPropertyValue(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.ReadOnlySpan{System.Byte})">
+            <summary>
+            Get the value of a single property. 
+            Certain vendor-specific metadata properties may exist within a whole slide image. They are encoded as key-value pairs. This call provides the value of the property given by name.
+            </summary>
+            <param name="osr">The OpenSlide object. </param>
+            <param name="utf8Name">The name of the desired property. Must be a valid name as given by openslide_get_property_names().</param>
+            <returns>The value of the named property, or NULL if the property doesn't exist or an error occurred. </returns>
+        </member>
+        <member name="T:OpenSlideNET.Interop.OpenSlideImageSafeHandle">
+            <summary>
+            Represents a wrapper class for OpenSlide image handle.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideImageSafeHandle.#ctor(System.IntPtr)">
+            <summary>
+            Initializes a new instance of the OpenSlideImageSafeHandle class with the specified handle value.
+            </summary>
+            <param name="handle">The OpenSlide handle.</param>
+        </member>
+        <member name="P:OpenSlideNET.Interop.OpenSlideImageSafeHandle.IsInvalid">
+            <summary>
+            Gets a value indicating whether the handle value is invalid
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.Interop.OpenSlideImageSafeHandle.ReleaseHandle">
+            <summary>
+            Free the OpenSlide image handle.
+            </summary>
+            <returns>true if the handle is released successfully; otherwise, in the event of a catastrophic failure, false.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,542 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenSlideNET</name>
+    </assembly>
+    <members>
+        <member name="T:OpenSlideNET.DeepZoomGenerator">
+            <summary>
+            Deep zoom generator for OpenSlide image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.Image">
+            <summary>
+            Get the underlying OpenSlide image object.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.DeepZoomGenerator.#ctor(OpenSlideNET.OpenSlideImage,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Initialize a <see cref="T:OpenSlideNET.DeepZoomGenerator"/> instance with the specified parameters.
+            </summary>
+            <param name="image">The OpenSlide image.</param>
+            <param name="tileSize">The tile size paramter.</param>
+            <param name="overlap">The overlap paramter.</param>
+            <param name="limitBounds">Whether image bounds should be respected.</param>
+            <param name="disposeImage">Whether the OpenSlide image instance should be disposed when this <see cref="T:OpenSlideNET.DeepZoomGenerator"/> instance is disposed.</param>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.LevelCount">
+            <summary>
+            The Count of the deep zoom level.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.LevelTiles">
+            <summary>
+            The number of tiles in each level.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.LevelDimensions">
+            <summary>
+            The dimensions of each level.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileCount">
+            <summary>
+            The total number of tiles.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.DeepZoomGenerator.GetTile(System.Int32,System.Int32,System.Int32,OpenSlideNET.DeepZoomGenerator.TileInfo@)">
+            <summary>
+            Get the pre-multiplied BGRA data for the specified tile.
+            </summary>
+            <param name="level">The deep zoom level.</param>
+            <param name="locationX">Horizontal tile index.</param>
+            <param name="locationY">Vertical tile index.</param>
+            <param name="info">Information of the specified tile.</param>
+            <returns>Pre-multiplied BGRA image data.</returns>
+        </member>
+        <member name="M:OpenSlideNET.DeepZoomGenerator.GetTileInfo(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Get information of the specified tile.
+            </summary>
+            <param name="level">The deep zoom level.</param>
+            <param name="locationX">Horizontal tile index.</param>
+            <param name="locationY">Vertical tile index.</param>
+            <returns>Information of the specified tile.</returns>
+        </member>
+        <member name="M:OpenSlideNET.DeepZoomGenerator.GetDzi(System.String)">
+            <summary>
+            Get the dzi file content.
+            </summary>
+            <param name="format">The iamge format.</param>
+            <returns>Dzi file content.</returns>
+        </member>
+        <member name="M:OpenSlideNET.DeepZoomGenerator.Dispose">
+            <summary>
+            Dispose this instance.
+            </summary>
+        </member>
+        <member name="T:OpenSlideNET.DeepZoomGenerator.TileInfo">
+            <summary>
+            Information of a tile.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.X">
+            <summary>
+            The X coordinate in the base level.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.Y">
+            <summary>
+            The Y coordinate in the base level.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.SlideLevel">
+            <summary>
+            The corresponding level in the OpenSlide image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.Width">
+            <summary>
+            Width of the image to read from OpenSlide image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.Height">
+            <summary>
+            Height of the image to read from OpenSlide image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.TileWidth">
+            <summary>
+            The width of the deep zoom tile.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.DeepZoomGenerator.TileInfo.TileHeight">
+            <summary>
+            The height of the deep zoom tile.
+            </summary>
+        </member>
+        <member name="T:OpenSlideNET.OpenSlideException">
+            <summary>
+            The exception that is thrown when OpenSlide library call failed.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideException"/> class.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideException"/> class with a specified error message.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException"/> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
+        </member>
+        <member name="T:OpenSlideNET.OpenSlideImage">
+            <summary>
+            A user-friendly wrapper class that operates on OpenSlide image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.LibraryVersion">
+            <summary>
+            Gets the OpenSlide library version.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.#ctor(OpenSlideNET.Interop.OpenSlideImageSafeHandle,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideImage"/> class with the specified <see cref="T:OpenSlideNET.Interop.OpenSlideImageSafeHandle"/>.
+            </summary>
+            <param name="handle"></param>
+            <param name="leaveOpen"></param>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.SafeHandle">
+            <summary>
+            Gets the OpenSlideImageSafeHandle for this object.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.Open(System.String)">
+            <summary>
+            Open a whole slide image.
+            This function can be expensive; avoid calling it unnecessarily. For example, a tile server should not call Open() on every tile request. Instead, it should maintain a cache of <see cref="T:OpenSlideNET.OpenSlideImage"/> objects and reuse them when possible.
+            </summary>
+            <param name="filename">The filename to open.</param>
+            <returns>The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</returns>
+            <exception cref="T:OpenSlideNET.OpenSlideUnsupportedFormatException">The file format can not be recognized.</exception>
+            <exception cref="T:OpenSlideNET.OpenSlideException">The file format is recognized, but an error occurred when opening the file.</exception>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.DetectFormat(System.String)">
+            <summary>
+            Return a string describing the format vendor of the specified file. This string is also accessible via the PROPERTY_NAME_VENDOR property.
+            If the file is not recognized, return null.
+            </summary>
+            <param name="filename">the file to examine</param>
+            <returns>the format vendor of the specified file.</returns>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.LevelCount">
+            <summary>
+            The number of levels in the slide. Levels are numbered from 0 (highest resolution) to level_count - 1 (lowest resolution).
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Dimensions">
+            <summary>
+            A (width, height) tuple for level 0 of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Width">
+            <summary>
+            Width of the level 0 image of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Height">
+            <summary>
+            Height of the level 0 image of the slide.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.GetLevelDimensions(System.Int32)">
+            <summary>
+            Get a (width, height) tuple for level k of the slide.
+            </summary>
+            <param name="level">the k level</param>
+            <returns>A (width, height) tuple for level k of the slide.</returns>
+            <exception cref="T:OpenSlideNET.OpenSlideException">An error occurred when calling reading the slide or the <see cref="T:OpenSlideNET.OpenSlideImage"/> was already in the error state.</exception>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.GetLevelDownsample(System.Int32)">
+            <summary>
+            Get the downsample factor for level k of the slide.
+            </summary>
+            <param name="level">the k level</param>
+            <returns>The downsample factor for level k of the slide.</returns>
+            <exception cref="T:OpenSlideNET.OpenSlideException">An error occurred when calling reading the slide or the <see cref="T:OpenSlideNET.OpenSlideImage"/> was already in the error state.</exception>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Property(System.String)">
+            <summary>
+            Gets the metadata about the slide.
+            </summary>
+            <param name="name">The metadata key name.</param>
+            <returns>A string containing the metadata value or NULL if there is no such metadata.</returns>
+            <exception cref="T:OpenSlideNET.OpenSlideException">An error occurred when calling reading the slide or the <see cref="T:OpenSlideNET.OpenSlideImage"/> was already in the error state.</exception>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Comment">
+            <summary>
+            Gets the comment of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.Vendor">
+            <summary>
+            Gets the vendor of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.QuickHash1">
+            <summary>
+            Gets the quick hash of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.BackgroundColor">
+            <summary>
+            Gets the background color of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.ObjectiveColor">
+            <summary>
+            Gets the objective color of the slide.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.MicronsPerPixelX">
+            <summary>
+            Get microns per pixel in the left to right direction.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.MicronsPerPixelY">
+            <summary>
+            Get microns per pixel in the top to bottom direction.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.BoundsX">
+            <summary>
+            The X coordinate of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.BoundsY">
+            <summary>
+            The Y coordinate of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.BoundsWidth">
+            <summary>
+            The width of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.BoundsHeight">
+            <summary>
+            The height of the rectangle bounding the non-empty region of the slide, if available.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.GetAllPropertyNames">
+            <summary>
+            Get the array of property names. 
+            </summary>
+            <returns>The array of property names</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.TryGetProperty(System.String,System.String@)">
+            <summary>
+            Gets the property value.
+            </summary>
+            <param name="name">The name of the property.</param>
+            <param name="value">The value of the property.</param>
+            <returns>True if the property of the specified name exists. Otherwise, false.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.GetAllAssociatedImageNames">
+            <summary>
+            Get the array of names of associated images. 
+            </summary>
+            <returns>The array of names of associated images.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.TryGetAssociatedImageDimensions(System.String,OpenSlideNET.OpenSlideImage.ImageDimensions@)">
+            <summary>
+            Gets the dimensions of the associated image.
+            </summary>
+            <param name="name">The name of the associated image.</param>
+            <param name="dimensions">The dimensions of the associated image.</param>
+            <returns>True if the associated image of the specified name exists. Otherwise, false.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadAssociatedImage(System.String,OpenSlideNET.OpenSlideImage.ImageDimensions@)">
+            <summary>
+            Copy pre-multiplied BGRA data from an associated image.
+            </summary>
+            <param name="name">The name of the associated image.</param>
+            <param name="dimensions">The dimensions of the associated image.</param>
+            <returns>The pixel data of the associated image.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadAssociatedImage(System.String,System.Span{System.Byte})">
+            <summary>
+            Copy pre-multiplied BGRA data from an associated image.
+            </summary>
+            <param name="name">The name of the associated image.</param>
+            <param name="buffer">The destination buffer to hold the pixel data. Should be at least (width * height * 4) bytes in length</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadAssociatedImage(System.String,System.Byte@)">
+            <summary>
+            Copy pre-multiplied BGRA data from an associated image.
+            </summary>
+            <param name="name">The name of the associated image.</param>
+            <param name="buffer">The destination buffer to hold the pixel data.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadAssociatedImage(System.String,System.IntPtr)">
+            <summary>
+            Copy pre-multiplied BGRA data from an associated image.
+            </summary>
+            <param name="name">The name of the associated image.</param>
+            <param name="buffer">The destination buffer to hold the pixel data.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadRegion(System.Int32,System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Copy pre-multiplied BGRA data from a whole slide image.
+            </summary>
+            <param name="level">The desired level.</param>
+            <param name="x">The top left x-coordinate, in the level 0 reference frame.</param>
+            <param name="y">The top left y-coordinate, in the level 0 reference frame.</param>
+            <param name="width">The width of the region. Must be non-negative.</param>
+            <param name="height">The height of the region. Must be non-negative.</param>
+            <returns>The pixel data of this region.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadRegion(System.Int32,System.Int64,System.Int64,System.Int64,System.Int64,System.Span{System.Byte})">
+            <summary>
+            Copy pre-multiplied BGRA data from a whole slide image.
+            </summary>
+            <param name="level">The desired level.</param>
+            <param name="x">The top left x-coordinate, in the level 0 reference frame.</param>
+            <param name="y">The top left y-coordinate, in the level 0 reference frame.</param>
+            <param name="width">The width of the region. Must be non-negative.</param>
+            <param name="height">The height of the region. Must be non-negative.</param>
+            <param name="buffer">The destination buffer for the BGRA data.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadRegion(System.Int32,System.Int64,System.Int64,System.Int64,System.Int64,System.Byte@)">
+            <summary>
+            Copy pre-multiplied BGRA data from a whole slide image.
+            </summary>
+            <param name="level">The desired level.</param>
+            <param name="x">The top left x-coordinate, in the level 0 reference frame.</param>
+            <param name="y">The top left y-coordinate, in the level 0 reference frame.</param>
+            <param name="width">The width of the region. Must be non-negative.</param>
+            <param name="height">The height of the region. Must be non-negative.</param>
+            <param name="buffer">The destination buffer for the BGRA data.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ReadRegion(System.Int32,System.Int64,System.Int64,System.Int64,System.Int64,System.IntPtr)">
+            <summary>
+            Copy pre-multiplied BGRA data from a whole slide image.
+            </summary>
+            <param name="level">The desired level.</param>
+            <param name="x">The top left x-coordinate, in the level 0 reference frame.</param>
+            <param name="y">The top left y-coordinate, in the level 0 reference frame.</param>
+            <param name="width">The width of the region. Must be non-negative.</param>
+            <param name="height">The height of the region. Must be non-negative.</param>
+            <param name="buffer">The destination buffer for the BGRA data.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.GetBestLevelForDownsample(System.Double)">
+            <summary>
+            Get the best level to use for displaying the given downsample.
+            </summary>
+            <param name="downsample">The downsample factor.</param>
+            <returns>The level identifier, or -1 if an error occurred.</returns>
+        </member>
+        <member name="T:OpenSlideNET.OpenSlideImage.ImageDimensions">
+            <summary>
+            Represents the image dimensions
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.ImageDimensions.Width">
+            <summary>
+            The width of the image.
+            </summary>
+        </member>
+        <member name="P:OpenSlideNET.OpenSlideImage.ImageDimensions.Height">
+            <summary>
+            The height of the image.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ImageDimensions.#ctor(System.Int64,System.Int64)">
+            <summary>
+            Initialize a new <see cref="T:OpenSlideNET.OpenSlideImage.ImageDimensions"/> struct.
+            </summary>
+            <param name="width">The width of the image.</param>
+            <param name="height">The height of the image.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ImageDimensions.Deconstruct(System.Int64@,System.Int64@)">
+            <summary>
+            Deconstruction the struct.
+            </summary>
+            <param name="width">The width of the image.</param>
+            <param name="height">The height of the image.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ImageDimensions.op_Implicit(OpenSlideNET.OpenSlideImage.ImageDimensions)~System.ValueTuple{System.Int64,System.Int64}">
+            <summary>
+            Converts the <see cref="T:OpenSlideNET.OpenSlideImage.ImageDimensions"/> struct into a tuple of (Width, Height).
+            </summary>
+            <param name="dimensions">the <see cref="T:OpenSlideNET.OpenSlideImage.ImageDimensions"/> struct.</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.ImageDimensions.op_Explicit(System.ValueTuple{System.Int64,System.Int64})~OpenSlideNET.OpenSlideImage.ImageDimensions">
+            <summary>
+            Converts a tuple of (Width, Height) into the <see cref="T:OpenSlideNET.OpenSlideImage.ImageDimensions"/> struct.
+            </summary>
+            <param name="dimensions">A tuple of (Width, Height).</param>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImage.Dispose">
+            <summary>
+            Dispose the <see cref="T:OpenSlideNET.OpenSlideImage"/> object.
+            </summary>
+        </member>
+        <member name="T:OpenSlideNET.OpenSlideImagePropertyExtensions">
+            <summary>
+            Helper class for reading properties of <see cref="T:OpenSlideNET.OpenSlideImage"/>.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.String)">
+            <summary>
+            Read the property with the specified <paramref name="name"/>. If the property does not exists, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The value returned when the specified property does not exists.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.Int16)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.Int16"/> value. If the property does not exists or can not be parsed as <see cref="T:System.Int16"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.UInt16)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.UInt16"/> value. If the property does not exists or can not be parsed as <see cref="T:System.UInt16"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.Int32)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.Int32"/> value. If the property does not exists or can not be parsed as <see cref="T:System.Int32"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.UInt32)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.UInt32"/> value. If the property does not exists or can not be parsed as <see cref="T:System.UInt32"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.Int64)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.Int64"/> value. If the property does not exists or can not be parsed as <see cref="T:System.Int64"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.UInt64)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.UInt64"/> value. If the property does not exists or can not be parsed as <see cref="T:System.UInt64"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.Single)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.Single"/> value. If the property does not exists or can not be parsed as <see cref="T:System.Single"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideImagePropertyExtensions.GetProperty(OpenSlideNET.OpenSlideImage,System.String,System.Double)">
+            <summary>
+            Read the property with the specified <paramref name="name"/> and parse it as a <see cref="T:System.Double"/> value. If the property does not exists or can not be parsed as <see cref="T:System.Double"/>, This function returns <paramref name="defaultValue"/>.
+            </summary>
+            <param name="image">The <see cref="T:OpenSlideNET.OpenSlideImage"/> object.</param>
+            <param name="name">The property name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>The value of the property or <paramref name="defaultValue"/>.</returns>
+        </member>
+        <member name="T:OpenSlideNET.OpenSlideUnsupportedFormatException">
+            <summary>
+            The exception that is thrown when OpenSlide is openning a unsupported file format.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideUnsupportedFormatException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideUnsupportedFormatException"/> class.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideUnsupportedFormatException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideUnsupportedFormatException"/> class with a specified error message.
+            </summary>
+        </member>
+        <member name="M:OpenSlideNET.OpenSlideUnsupportedFormatException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenSlideNET.OpenSlideUnsupportedFormatException"/> class with a specified error message and a reference to the inner exception that is the cause of this exception
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception. If the <paramref name="innerException"/> parameter is not a null reference, the current exception is raised in a catch block that handles the inner exception.</param>
+        </member>
+    </members>
+</doc>

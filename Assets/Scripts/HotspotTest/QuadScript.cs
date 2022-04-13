@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OpenSlideNET;
 
 public class QuadScript : MonoBehaviour
 {
@@ -18,6 +19,16 @@ public class QuadScript : MonoBehaviour
 
         points = new float[maxPoints * 3]; //32 allowed points on heat map
         //send x coord, y coord, intensity
+
+
+
+
+        
+    }
+
+    private float ChangeValue(double value)
+    {
+        return Mathf.Min(1.0f, (float)(value / 255));
     }
 
     private void Update()
