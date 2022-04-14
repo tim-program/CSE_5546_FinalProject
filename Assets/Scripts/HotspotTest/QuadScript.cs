@@ -8,7 +8,7 @@ public class QuadScript : MonoBehaviour
     Material quadMaterial;
     MeshRenderer quadMeshRenderer;
 
-    float[] points;
+    public float[] points;
     int hitCount;
     int maxPoints = 32;
 
@@ -19,11 +19,6 @@ public class QuadScript : MonoBehaviour
 
         points = new float[maxPoints * 3]; //32 allowed points on heat map
         //send x coord, y coord, intensity
-
-
-
-
-        
     }
 
     private float ChangeValue(double value)
