@@ -1280,7 +1280,7 @@ MonoBehaviour:
         - m_Target: {fileID: 2040161902}
           m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
           m_MethodName: OnDrag
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1296,7 +1296,7 @@ MonoBehaviour:
         - m_Target: {fileID: 2040161902}
           m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
           m_MethodName: OnDragStarted
-          m_Mode: 1
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
