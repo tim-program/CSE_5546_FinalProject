@@ -1922,6 +1922,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1000010658878508, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1000011817404238, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
       propertyPath: m_Name
       value: SimpleFileBrowserCanvas
@@ -2004,7 +2008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224000012931849942, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000013440901968, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2621,7 +2625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayTransform: {fileID: 1329288361}
   m_Cursor: {fileID: 1883878310}
-  joyPadClickButton: 8192
+  joyPadClickButton: 2105344
   gazeClickKey: 32
   performSphereCastForGazepointer: 0
   useRightStickScroll: 1
