@@ -60,6 +60,7 @@ crashlytics-build.properties
 
 # Ignore entire Imported Resources
 [Aa]ssets/Resources/
+[Aa]ssets/Imported/
 
 # Ignore Editor User Settings
 [Uu]serSettings/
