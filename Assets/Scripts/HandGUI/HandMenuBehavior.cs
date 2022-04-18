@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HandMenuBehavior : MonoBehaviour
 {
+    [SerializeField] GameObject canvas;
 
     [SerializeField] UnityEngine.UI.Image debugImage;
     [SerializeField] UnityEngine.UI.Button debugButton;
@@ -15,7 +16,14 @@ public class HandMenuBehavior : MonoBehaviour
 
     private void Update()
     {
-        debugText.name = string.Format("{0}",OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger));
+        if(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) > 0.7f)
+        {
+            canvas.SetActive(true);
+        }
+        else
+        {
+            canvas.SetActive(false);
+        }
     }
 
     public void Debug()

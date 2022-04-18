@@ -265,6 +265,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9809c5e8418bb047bf2c8ba1d1a2cec, type: 3}
+--- !u!1 &24687996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24687999}
+  - component: {fileID: 24687997}
+  m_Layer: 0
+  m_Name: HandMenuBehavior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &24687997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24687996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ec5d3d4121e93429f64a86b7f337a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 97006676}
+  debugImage: {fileID: 187433283}
+  debugButton: {fileID: 55601250}
+  toggleText: {fileID: 1887319092}
+  toggle: {fileID: 927733213}
+  debugText: {fileID: 525825484}
+--- !u!224 &24687999
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24687996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.33524358}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.13629103, y: -0.011469556}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &55601248
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +402,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97006682}
+      - m_Target: {fileID: 24687997}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
         m_MethodName: Debug
         m_Mode: 1
@@ -411,7 +465,6 @@ GameObject:
   - component: {fileID: 97006679}
   - component: {fileID: 97006678}
   - component: {fileID: 97006683}
-  - component: {fileID: 97006682}
   - component: {fileID: 97006677}
   m_Layer: 5
   m_Name: HandMenuCanvas
@@ -518,23 +571,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 640, y: 480}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &97006682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97006676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ec5d3d4121e93429f64a86b7f337a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debugImage: {fileID: 187433283}
-  debugButton: {fileID: 55601250}
-  toggleText: {fileID: 1887319092}
-  toggle: {fileID: 927733213}
-  debugText: {fileID: 525825484}
 --- !u!114 &97006683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,6 +869,10 @@ PrefabInstance:
       propertyPath: rayTransform
       value: 
       objectReference: {fileID: 809801814}
+    - target: {fileID: 114043904411177872, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
+      propertyPath: joyPadClickButton
+      value: 2097152
+      objectReference: {fileID: 0}
     - target: {fileID: 120006741097097638, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1223,7 +1263,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97006682}
+      - m_Target: {fileID: 24687997}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
         m_MethodName: Quit
         m_Mode: 1
@@ -1601,7 +1641,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 97006682}
+      - m_Target: {fileID: 24687997}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
         m_MethodName: ToggleChanged
         m_Mode: 1

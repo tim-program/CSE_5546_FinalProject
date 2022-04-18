@@ -60,7 +60,7 @@ crashlytics-build.properties
 
 # Ignore entire Imported Resources
 [Aa]ssets/Resources/
-[Aa]ssets/Imported/
+[Aa]ssets/Oculus/LipSync
 
 # Ignore Editor User Settings
 [Uu]serSettings/
