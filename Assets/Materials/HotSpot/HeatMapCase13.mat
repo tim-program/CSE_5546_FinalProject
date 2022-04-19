@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HeatmapQuad
+  m_Name: HeatMapCase13
   m_Shader: {fileID: 4800000, guid: e092e323df62eae479de5387e00fbd6e, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38956ecbdced41e47b895aeb799e5a2d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9014d033d9e74e940a411dffd7aa2b4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
