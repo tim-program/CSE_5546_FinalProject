@@ -9,6 +9,7 @@ public class DebugText : MonoBehaviour
 {
     public Text displayText;
     public static List<string> DebugLog;
+    public int maxMsgs = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,7 @@ public class DebugText : MonoBehaviour
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
-        if (DebugLog.Count == 10)
+        if (DebugLog.Count == maxMsgs)
         {
             DebugLog.RemoveAt(0);
         }
