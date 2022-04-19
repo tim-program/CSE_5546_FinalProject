@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2226,7 +2226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011817404238, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
       propertyPath: m_Name
-      value: SimpleFileBrowserCanvas
+      value: BrowserCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1000011817404238, guid: 9ea2606f8fddead46aabb7adb3d8d434, type: 3}
       propertyPath: m_IsActive
@@ -2989,6 +2989,7 @@ MonoBehaviour:
   controllerLeft: {fileID: 360015821}
   controllerRight: {fileID: 580152811}
   ovrInput: {fileID: 2022225685}
+  wsiImage: {fileID: 1304349654}
   window: {fileID: 1304349652}
 --- !u!1 &2108379864
 GameObject:

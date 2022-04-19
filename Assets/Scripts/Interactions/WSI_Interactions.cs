@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class WSI_Interactions : MonoBehaviour
 {
@@ -14,11 +15,15 @@ public class WSI_Interactions : MonoBehaviour
     public GameObject controllerLeft;
     public GameObject controllerRight;
     public OVRInputModule ovrInput;
+    public Image wsiImage; 
+    public WSIManager manager;
 
     private Camera canvasCam;
     [SerializeField]
     private RectTransform window;
     private Vector2 initialTouchPos = Vector2.zero;
+
+    private int originX, originY, zoomLevel;
 
     // this is the number of frames we will run things like input checks, etc.
     private int counter = 0;
@@ -27,7 +32,17 @@ public class WSI_Interactions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ReinitInteractions();
         InputTypeCheck();
+    }
+
+    public void LoadWSI(string fileName)
+    {
+        manager = new WSIManager(fileName, windowSizeX: (int)window.rect.width, windowSizeY: (int)window.rect.height);
+        originX = (int)(manager.image.Height / 2);
+        originY = (int)(manager.image.Width / 2);
+        Texture2D imTex = manager.GetTilesAtZoomAndPos(0, originX, originY);
+        ApplyInteractedTexture(imTex);    
     }
 
     public void OnDragStarted(BaseEventData data)
@@ -44,13 +59,43 @@ public class WSI_Interactions : MonoBehaviour
 
         Vector2 touchPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(window, pointer.position, canvasCam, out touchPos);
-        window.anchoredPosition += touchPos - initialTouchPos;
+        Vector2 newPos = touchPos - initialTouchPos;
+        originX = (int)newPos.x;
+        originY = (int)newPos.y;
+        Texture2D imTex = manager.GetTilesAtZoomAndPos(zoomLevel, originX, originY);
+        ApplyInteractedTexture(imTex);
+        
+    }
+
+    public void OnZoomIn(BaseEventData data)
+    {
+
+    }
+
+    public void OnZoomOut(BaseEventData data)
+    {
+
     }
 
     public void OnEndDrag()
     {
         //EnsureWindowInBounds();
         print("Stopped Dragging");
+    }
+
+    private void ApplyInteractedTexture(Texture2D imTex)
+    {
+        float ratio = ((float)imTex.height) / imTex.width;
+        float x = 10;
+        float y = x * ratio;
+        window.localScale = new Vector3(x, 1, y);
+        Rect rect = new Rect((!(imTex.width < imTex.height) ? (imTex.width - imTex.height) / 2 : 0),
+                              (!(imTex.width > imTex.height) ? (imTex.height - imTex.width) / 2 : 0),
+                              (!(imTex.width > imTex.height) ? imTex.width : imTex.height),
+                              (!(imTex.width > imTex.height) ? imTex.width : imTex.height));
+
+        Sprite s = Sprite.Create(imTex, rect, new Vector2(.5f, .5f));
+        wsiImage.sprite = s;
     }
 
     public void Update()
@@ -111,7 +156,12 @@ public class WSI_Interactions : MonoBehaviour
         }
     }
 
-    
+    private void ReinitInteractions()
+    {
+        originX = 0;
+        originY = 0;
+        zoomLevel = 0;
+    }
     
 
     /*
