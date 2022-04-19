@@ -130,9 +130,9 @@ public class OvrAvatar : MonoBehaviour
     private UInt64 clothingAlphaTexture = 0;
 
     // Lipsync
-    private OVRLipSyncMicInput micInput = null;
-    private OVRLipSyncContext lipsyncContext = null;
-    private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
+    //private OVRLipSyncMicInput micInput = null;
+    //private OVRLipSyncContext lipsyncContext = null;
+    //private OVRLipSync.Frame currentFrame = new OVRLipSync.Frame();
     private float[] visemes = new float[VISEME_COUNT];
     private AudioSource audioSource;
     private ONSPAudioSource spatializedSource;
@@ -1031,6 +1031,7 @@ public class OvrAvatar : MonoBehaviour
         if (GetComponent<OvrAvatarLocalDriver>() != null)
         {
             // Use mic.
+            /*
             lipsyncContext.audioLoopback = false;
             if (CanOwnMicrophone && IsValidMic())
             {
@@ -1039,7 +1040,7 @@ public class OvrAvatar : MonoBehaviour
                 micInput.MicFrequency = 44100;
                 micInput.micControl = OVRLipSyncMicInput.micActivation.ConstantSpeak;
             }
-
+            */
             // Set lipsync animation parameters in SDK
             CAPI.ovrAvatar_SetActionUnitOnsetSpeed(sdkAvatar, ACTION_UNIT_ONSET_SPEED);
             CAPI.ovrAvatar_SetActionUnitFalloffSpeed(sdkAvatar, ACTION_UNIT_FALLOFF_SPEED);
@@ -1177,6 +1178,7 @@ public class OvrAvatar : MonoBehaviour
             spatializedSource.Near = 0.1f;
 
             // Add phoneme context to the mouth anchor
+            /*
             lipsyncContext = MouthAnchor.GetComponent<OVRLipSyncContext>();
             if (lipsyncContext == null)
             {
@@ -1191,6 +1193,7 @@ public class OvrAvatar : MonoBehaviour
             lipsyncContext.skipAudioSource = !CanOwnMicrophone;
 
             StartCoroutine(WaitForMouthAudioSource());
+            */
         }
 
         if (GetComponent<OvrAvatarRemoteDriver>() != null)
@@ -1267,22 +1270,27 @@ public class OvrAvatar : MonoBehaviour
 
     public void UpdateVoiceData(short[] pcmData, int numChannels)
     {
+        /*
       if (lipsyncContext != null && micInput == null)
       {
           lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
       }
+        */
     }
     public void UpdateVoiceData(float[] pcmData, int numChannels)
     {
+        /*
       if (lipsyncContext != null && micInput == null)
       {
           lipsyncContext.ProcessAudioSamplesRaw(pcmData, numChannels);
       }
+        */
     }
 
 
     private void UpdateFacewave()
     {
+        /*
         if (lipsyncContext != null && (micInput != null || CanOwnMicrophone == false))
         {
             // Get the current viseme frame
@@ -1307,5 +1315,6 @@ public class OvrAvatar : MonoBehaviour
             }
             CAPI.ovrAvatar_SetVisemes(sdkAvatar, RuntimeVisemes);
         }
+        */
     }
 }
