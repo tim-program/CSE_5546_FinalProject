@@ -11,16 +11,24 @@ public class DebugText : MonoBehaviour
     public static List<string> DebugLog;
     public int maxMsgs = 10;
 
+
+    private void Awake()
+    {
+        DebugLog = new List<string>();
+        Application.logMessageReceived += HandleLog;
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         // displayText = GetComponent<Text>();
-        DebugLog = new List<string>();
-        Application.logMessageReceived += HandleLog;
     }
 
     void HandleLog(string logString, string stackTrace, LogType type)
     {
+
+
         if (DebugLog.Count == maxMsgs)
         {
             DebugLog.RemoveAt(0);
