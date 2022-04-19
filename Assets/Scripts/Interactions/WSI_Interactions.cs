@@ -7,16 +7,14 @@ using UnityEngine.UI;
 public class WSI_Interactions : MonoBehaviour
 {
     // Access these from anywhere! Be careful, though
-    public static GameObject activeLeftDevice;
-    public static GameObject activeRightDevice;
+    //public static GameObject activeLeftDevice;
+    //public static GameObject activeRightDevice;
 
-    public GameObject handTrackingLeft;
-    public GameObject handTrackingRight;
-    public GameObject controllerLeft;
-    public GameObject controllerRight;
     public OVRInputModule ovrInput;
     public Image wsiImage; 
     public WSIManager manager;
+    public Transform wsiOffset;
+    public UserCircle menuLock;
 
     private Camera canvasCam;
     [SerializeField]
@@ -33,7 +31,8 @@ public class WSI_Interactions : MonoBehaviour
     void Start()
     {
         ReinitInteractions();
-        InputTypeCheck();
+        LoadWSI(Application.persistentDataPath + "/Data/Case19.tiff");
+        //InputTypeCheck();
     }
 
     public void LoadWSI(string fileName)
@@ -67,6 +66,17 @@ public class WSI_Interactions : MonoBehaviour
         
     }
 
+    //will move wsiOffset +1 or -1 step from UserCircle
+    public void OnMoveCanvas(BaseEventData data)
+    {
+
+    }
+
+    public void OnScaleCanvas(BaseEventData data)
+    {
+
+    }
+
     public void OnZoomIn(BaseEventData data)
     {
 
@@ -89,10 +99,7 @@ public class WSI_Interactions : MonoBehaviour
         float x = 10;
         float y = x * ratio;
         window.localScale = new Vector3(x, 1, y);
-        Rect rect = new Rect((!(imTex.width < imTex.height) ? (imTex.width - imTex.height) / 2 : 0),
-                              (!(imTex.width > imTex.height) ? (imTex.height - imTex.width) / 2 : 0),
-                              (!(imTex.width > imTex.height) ? imTex.width : imTex.height),
-                              (!(imTex.width > imTex.height) ? imTex.width : imTex.height));
+        Rect rect = new Rect(0f,0f,imTex.width, imTex.height);
 
         Sprite s = Sprite.Create(imTex, rect, new Vector2(.5f, .5f));
         wsiImage.sprite = s;
@@ -106,14 +113,14 @@ public class WSI_Interactions : MonoBehaviour
 
     private void DelayFunctions()
     {
-        if(counter % FRAME_LIM <= 0)
+        if(counter % FRAME_LIM == 0)
         {
             /* Every function called in this logic
              * will have a 5+ (check value) frame delay.
              * This is useful for tons of reasons.
              */
 
-            InputTypeCheck();
+            //InputTypeCheck();
             
             
             counter = 0;
@@ -125,35 +132,7 @@ public class WSI_Interactions : MonoBehaviour
 
     private void InputTypeCheck()
     {
-        // Hand Tracking:
-        if(OVRPlugin.GetHandTrackingEnabled() == true)
-        {
-            handTrackingLeft.SetActive(true);
-            handTrackingRight.SetActive(true);
-            controllerLeft.SetActive(false);
-            controllerRight.SetActive(false);
-            // Assign active devices
-            activeLeftDevice = handTrackingLeft;
-            activeRightDevice = handTrackingRight;
-        } else
-        {
-            handTrackingLeft.SetActive(false);
-            handTrackingRight.SetActive(false);
-            controllerLeft.SetActive(true);
-            controllerRight.SetActive(true);
-            activeLeftDevice = controllerLeft;
-            activeRightDevice = controllerRight;
-        }
-
-        if(OVRInput.GetActiveController() == OVRInput.Controller.LTouch)
-        {
-            //Left controller active
-        }
-
-        if (OVRInput.GetActiveController() == OVRInput.Controller.RTouch)
-        {
-            //Right controller active
-        }
+        //can switch inputs here but its not necessary
     }
 
     private void ReinitInteractions()

@@ -789,10 +789,10 @@ namespace SimpleFileBrowser
 
 			nullPointerEventData = new PointerEventData( null );
 
-#if !UNITY_EDITOR && ( UNITY_ANDROID || UNITY_IOS || UNITY_WSA || UNITY_WSA_10_0 )
-			defaultInitialPath = Application.persistentDataPath;
+#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IOS || UNITY_WSA || UNITY_WSA_10_0)
+			defaultInitialPath = Application.persistentDataPath + "/Data/";
 #else
-			defaultInitialPath = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments );
+			defaultInitialPath = Application.persistentDataPath + "/Data/";
 #endif
 
 #if !UNITY_EDITOR && UNITY_ANDROID
@@ -1556,7 +1556,7 @@ namespace SimpleFileBrowser
 			// https://github.com/yasirkula/UnitySimpleFileBrowser/issues/30
 			if( !canvas )
 				return;
-
+			newPath = Application.persistentDataPath + "/Data/";
 			CurrentPath = newPath;
 		}
 
@@ -2617,7 +2617,7 @@ namespace SimpleFileBrowser
 			if( !string.IsNullOrEmpty( initialPath ) && !FileBrowserHelpers.DirectoryExists( initialPath ) && FileBrowserHelpers.FileExists( initialPath ) )
 			{
 				// Path points to a file, use its parent directory's path instead
-				initialPath = FileBrowserHelpers.GetDirectoryName( initialPath );
+				initialPath = default;
 			}
 
 			if( string.IsNullOrEmpty( initialPath ) || !FileBrowserHelpers.DirectoryExists( initialPath ) )
@@ -2634,7 +2634,7 @@ namespace SimpleFileBrowser
 				}
 			}
 
-			m_currentPath = string.Empty; // Needed to correctly reset the pathsFollowed
+			m_currentPath = defaultInitialPath; // Needed to correctly reset the pathsFollowed
 
 			return initialPath;
 		}
