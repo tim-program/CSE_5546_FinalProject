@@ -28,6 +28,7 @@ public class WSIManager
     public WSIManager(string fileName, int windowSizeX = -1, int windowSizeY = -1, int tileSize = 254,
         int overlap = 1)
     {
+        Debug.Log(OpenSlideImage.LibraryVersion);
         Debug.Log($"Loading file {fileName}");
         image = OpenSlideImage.Open(fileName);
         viewX = windowSizeX > 0 ? windowSizeX : image.Height;
