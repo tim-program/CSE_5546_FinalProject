@@ -16,18 +16,21 @@ public class HandMenuBehavior : MonoBehaviour
     [SerializeField] UnityEngine.UI.Text debugText;
 
     [SerializeField] GameObject quadObject;
+    private MeshRenderer quadObjectMR;
+    [SerializeField] Material[] materials;
 
     private void Start()
     {
         if (quadObject != null)
         {
-            quadObject.GetComponent<MeshRenderer>().enabled = false;
+            quadObjectMR = quadObject.GetComponent<MeshRenderer>();
+            quadObjectMR.enabled = false;
         }
     }
 
     private void Update()
     {
-        if(OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) > 0.7f)
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger) > 0.7f)
         {
             canvas.SetActive(true);
         }
@@ -37,16 +40,17 @@ public class HandMenuBehavior : MonoBehaviour
         }
     }
 
-    public void Debug()
+    public void ChangeCaseNumber(int caseNum)
     {
-        debugImage.color = new Color(Random.value, Random.value, Random.value);
+        UnityEngine.Debug.Log($"Choosing case: {caseNum}");
+        quadObjectMR.material = materials[caseNum];
     }
 
     public void ToggleChanged(Toggle change)
     {
         UnityEngine.Debug.Log(change.isOn);
 
-        if(quadObject != null)
+        if (quadObject != null)
         {
             quadObject.GetComponent<MeshRenderer>().enabled = change.isOn;
         }
@@ -56,6 +60,4 @@ public class HandMenuBehavior : MonoBehaviour
     {
         Application.Quit();
     }
-   
-
 }

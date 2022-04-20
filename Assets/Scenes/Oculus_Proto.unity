@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -459,12 +459,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 715999449}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
-        m_MethodName: Debug
-        m_Mode: 1
+        m_MethodName: ChangeCaseNumber
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -615,9 +615,9 @@ RectTransform:
   m_LocalScale: {x: 0.001, y: 0.001, z: 1}
   m_Children:
   - {fileID: 4652645}
-  - {fileID: 1525318772}
   - {fileID: 1021061086}
   - {fileID: 581189169}
+  - {fileID: 1525318772}
   - {fileID: 1559499831}
   - {fileID: 250458207}
   m_Father: {fileID: 0}
@@ -904,7 +904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Case 18
 --- !u!222 &358423294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -964,7 +964,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Case 13
 --- !u!222 &383813931
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1517,7 +1517,7 @@ RectTransform:
   m_Children:
   - {fileID: 544066110}
   m_Father: {fileID: 322102545}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1954,6 +1954,10 @@ MonoBehaviour:
   toggle: {fileID: 1021061087}
   debugText: {fileID: 383813930}
   quadObject: {fileID: 1803694088}
+  materials:
+  - {fileID: 2100000, guid: 3038134a12394b64986e074b806ee0b5, type: 2}
+  - {fileID: 2100000, guid: d300eef07a96ccb46851a2d5b877b460, type: 2}
+  - {fileID: 2100000, guid: 4b0018728c7fec54babfff37a03a4e07, type: 2}
 --- !u!224 &715999450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2301,7 +2305,7 @@ RectTransform:
   - {fileID: 146236792}
   - {fileID: 1695045523}
   m_Father: {fileID: 322102545}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3029,7 +3033,7 @@ RectTransform:
   m_Children:
   - {fileID: 383813932}
   m_Father: {fileID: 322102545}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3120,8 +3124,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 715999449}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
-        m_MethodName: Debug
-        m_Mode: 1
+        m_MethodName: ChangeCaseNumber
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3327,12 +3331,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 715999449}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
-        m_MethodName: Debug
-        m_Mode: 1
+        m_MethodName: ChangeCaseNumber
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
