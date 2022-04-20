@@ -44,6 +44,8 @@ public class HandMenuBehavior : MonoBehaviour
 
     public void ToggleChanged(Toggle change)
     {
+        UnityEngine.Debug.Log(change.isOn);
+
         if(quadObject != null)
         {
             quadObject.GetComponent<MeshRenderer>().enabled = change.isOn;

@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &183488126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,7 +343,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 448204552}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1953,6 +1953,7 @@ MonoBehaviour:
   toggleText: {fileID: 1695045525}
   toggle: {fileID: 1021061087}
   debugText: {fileID: 383813930}
+  quadObject: {fileID: 1803694088}
 --- !u!224 &715999450
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2357,16 +2358,16 @@ MonoBehaviour:
       - m_Target: {fileID: 715999449}
         m_TargetAssemblyTypeName: HandMenuBehavior, Assembly-CSharp
         m_MethodName: ToggleChanged
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1021061087}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &1140502512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayText: {fileID: 1140502514}
-  maxMsgs: 10
+  maxMsgs: 20
 --- !u!1 &1304349651
 GameObject:
   m_ObjectHideFlags: 0

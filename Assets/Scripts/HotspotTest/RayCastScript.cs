@@ -29,7 +29,7 @@ public class RayCastScript : MonoBehaviour
             {
                 if (hit.collider.gameObject == Heatmap)
                 {
-                    Debug.Log("Hot spot quad hit [" + hit.textureCoord.x + ", " + hit.textureCoord.y + "]");
+                    //Debug.Log("Hot spot quad hit [" + hit.textureCoord.x + ", " + hit.textureCoord.y + "]");
                     quad.AddHitPoint(
                         //shader uses a range of -2.0f to 2.0f (IDK why but use this for now)
                         RemapRange(hit.textureCoord.x, 0.0f, 1.0f, -2.0f, 2.0f),
