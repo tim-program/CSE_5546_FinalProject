@@ -33,7 +33,6 @@ public class HandMenuBehavior : MonoBehaviour
 
     public void ToggleChanged()
     {
-        toggleText.text = toggle.isOn ? "On" : "Off";
     }
 
     public void Quit()
