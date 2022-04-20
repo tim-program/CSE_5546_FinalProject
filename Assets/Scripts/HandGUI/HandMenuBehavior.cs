@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandMenuBehavior : MonoBehaviour
 {
@@ -13,6 +14,16 @@ public class HandMenuBehavior : MonoBehaviour
     [SerializeField] UnityEngine.UI.Toggle toggle;
 
     [SerializeField] UnityEngine.UI.Text debugText;
+
+    [SerializeField] GameObject quadObject;
+
+    private void Start()
+    {
+        if (quadObject != null)
+        {
+            quadObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
 
     private void Update()
     {
@@ -31,9 +42,14 @@ public class HandMenuBehavior : MonoBehaviour
         debugImage.color = new Color(Random.value, Random.value, Random.value);
     }
 
-    public void ToggleChanged()
+    public void ToggleChanged(Toggle change)
     {
-        toggleText.text = toggle.isOn ? "On" : "Off";
+        UnityEngine.Debug.Log(change.isOn);
+
+        if(quadObject != null)
+        {
+            quadObject.GetComponent<MeshRenderer>().enabled = change.isOn;
+        }
     }
 
     public void Quit()

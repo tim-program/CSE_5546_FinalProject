@@ -83,7 +83,7 @@ Shader "Unlit/HeatmapShader"
 
 
             float distsq(float2 a, float2 b) {
-                float area_of_effect_size = 0.5;
+                float area_of_effect_size = 0.25;
                 float d = max(0.0,1.0 - distance(a, b) / area_of_effect_size);
                 d = pow(d, 2);
                 return d;

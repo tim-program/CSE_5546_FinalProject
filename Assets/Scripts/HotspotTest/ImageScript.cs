@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using OpenSlideNET;
+using UnityEngine.UI;
 
-public class QuadScript : MonoBehaviour
+public class ImageScript : MonoBehaviour
 {
-    Material quadMaterial;
-    MeshRenderer quadMeshRenderer;
+    Material imageMaterial;
+    Image image;
 
     public float[] points;
     int hitCount;
@@ -14,8 +15,8 @@ public class QuadScript : MonoBehaviour
 
     private void Start()
     {
-        quadMeshRenderer = GetComponent<MeshRenderer>();
-        quadMaterial = quadMeshRenderer.material;
+        image = GetComponent<Image>();
+        imageMaterial = image.material;
 
         points = new float[maxPoints * 3]; //32 allowed points on heat map
         //send x coord, y coord, intensity
@@ -40,8 +41,8 @@ public class QuadScript : MonoBehaviour
         hitCount++;
         hitCount %= maxPoints;
 
-        quadMaterial.SetFloatArray("_Hits", points);
-        quadMaterial.SetInt("_HitCount", hitCount);
+        imageMaterial.SetFloatArray("_Hits", points);
+        imageMaterial.SetInt("_HitCount", hitCount);
     }
 
     private void CheckMouseClickOnThis()
