@@ -37,26 +37,29 @@ public class WSI_Interactions : MonoBehaviour
 
     public void LoadWSI(string fileName)
     {
+        /*
         manager = new WSIManager(fileName, windowSizeX: (int) window.rect.width, windowSizeY: (int) window.rect.height);
         originX = (int) (manager.image.Height / 2);
         originY = (int) (manager.image.Width / 2);
         Texture2D imTex = manager.GetTilesAtZoomAndPos(0, originX, originY);
         ApplyInteractedTexture(imTex);
+        */
     }
 
     public void OnDragStarted(BaseEventData data)
     {
         PointerEventData pointer = (PointerEventData) data;
-
+        /*
         canvasCam = pointer.pressEventCamera;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(window, pointer.pressPosition, canvasCam,
             out initialTouchPos);
+        */
     }
 
     public void OnDrag(BaseEventData data)
     {
         PointerEventData pointer = (PointerEventData) data;
-
+        /*
         Vector2 touchPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(window, pointer.position, canvasCam, out touchPos);
         Vector2 newPos = touchPos - initialTouchPos;
@@ -64,6 +67,7 @@ public class WSI_Interactions : MonoBehaviour
         originY = (int) newPos.y;
         Texture2D imTex = manager.GetTilesAtZoomAndPos(zoomLevel, originX, originY);
         ApplyInteractedTexture(imTex);
+        */
     }
 
     //will move wsiOffset +1 or -1 step from UserCircle
@@ -79,8 +83,13 @@ public class WSI_Interactions : MonoBehaviour
     {
     }
 
-    public void OnZoomOut(BaseEventData data)
+    public void OnScroll(BaseEventData data)
     {
+        PointerEventData pointer = (PointerEventData)data;
+        float scrollDeltaX = pointer.scrollDelta.x;
+        float scrollDeltaY = pointer.scrollDelta.y;
+        menuLock.GetCirclePoint(scrollDeltaX, scrollDeltaY);
+
     }
 
     public void OnEndDrag()

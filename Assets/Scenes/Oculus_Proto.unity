@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -447,6 +447,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2037080, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
   m_PrefabInstance: {fileID: 309203815}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &309203824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 309203815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &344780302
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +612,6 @@ GameObject:
   - component: {fileID: 416976114}
   - component: {fileID: 416976116}
   - component: {fileID: 416976113}
-  - component: {fileID: 416976117}
   m_Layer: 5
   m_Name: WSI_Canvas
   m_TagString: Untagged
@@ -622,7 +626,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 416976111}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -633,7 +637,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 480}
+  m_SizeDelta: {x: 1500, y: 1500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &416976113
 MonoBehaviour:
@@ -715,20 +719,6 @@ MonoBehaviour:
     m_Bits: 4294967295
   pointer: {fileID: 50899959}
   sortOrder: 0
---- !u!114 &416976117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 416976111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3abf242a49174f4448613ab36c944657, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1570596343}
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &483746305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1611,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304349653
 MonoBehaviour:
@@ -1731,6 +1721,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
           m_MethodName: OnEndDrag
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 7
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 309203821}
+          m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
+          m_MethodName: OnScroll
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1906,10 +1912,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlPoints:
-  - {x: -250, y: 250, z: -100}
-  - {x: -83.33334, y: 250, z: 0}
-  - {x: 83.33331, y: 250, z: 0}
-  - {x: 250, y: 250, z: -90}
+  - {x: -500, y: 500, z: -100}
+  - {x: -166.66669, y: 500, z: 0}
+  - {x: 166.66663, y: 500, z: 0}
+  - {x: 500, y: 500, z: -90}
 --- !u!1 &1538672900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665397058}
+  - component: {fileID: 1665397059}
   m_Layer: 0
   m_Name: WSI
   m_TagString: Untagged
@@ -2158,6 +2165,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665397059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665397057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abf242a49174f4448613ab36c944657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1570596343}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &2022225681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2907,6 +2928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleRender: {fileID: 2059376356}
+  wsiOffset: {fileID: 1570596344}
+  player: {fileID: 309203824}
 --- !u!120 &2059376356
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -2957,17 +2980,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.117399946
-        value: 0.9108956
+        time: 0.29455566
+        value: 0.99331915
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -2979,8 +2993,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.16375932, g: 0.9433962, b: 0.8596705, a: 1}
-      key1: {r: 0.16375932, g: 0.9433962, b: 0.8596705, a: 1}
+      key0: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
+      key1: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -3003,7 +3017,7 @@ LineRenderer:
       atime5: 0
       atime6: 0
       atime7: 0
-      m_Mode: 0
+      m_Mode: 1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -3058,7 +3072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlPoints:
-  - {x: -250, y: -250, z: -100}
-  - {x: -83.33334, y: -250, z: 0}
-  - {x: 83.33331, y: -250, z: 0}
-  - {x: 250, y: -250, z: -90}
+  - {x: -500, y: -500, z: -100}
+  - {x: -166.66669, y: -500, z: 0}
+  - {x: 166.66663, y: -500, z: 0}
+  - {x: 500, y: -500, z: -90}
