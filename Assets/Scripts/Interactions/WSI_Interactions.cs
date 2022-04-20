@@ -31,7 +31,8 @@ public class WSI_Interactions : MonoBehaviour
     {
         ReinitInteractions();
         // LoadWSI(Application.persistentDataPath + "/Data/Case19.tiff");
-        LoadWSI("Assets/Scripts/WSIDemo/Melanoma_30_1.tiff");
+        ///LoadWSI("Assets/Scripts/WSIDemo/Melanoma_30_1.tiff");
+        LoadWSI("./Case19.tif");
         //InputTypeCheck();
     }
 
@@ -94,12 +95,13 @@ public class WSI_Interactions : MonoBehaviour
         float ratio = ((float) imTex.height) / imTex.width;
         float x = 10;
         float y = x * ratio;
-        window.localScale = new Vector3(x, 1, y);
+        //window.localScale = new Vector3(x, 1, y);
         imTex.Apply();
-        wsiImage.material.mainTexture = imTex;
-        // Rect rect = new Rect(0f, 0f, imTex.width, imTex.height);
+        //wsiImage.material.mainTexture = imTex;
+        Rect rect = new Rect(0f, 0f, imTex.width, imTex.height);
 
-        // Sprite s = Sprite.Create(imTex, rect, new Vector2(.5f, .5f));
+        Sprite s = Sprite.Create(imTex, rect, new Vector2(.5f, .5f));
+        wsiImage.sprite = s;
     }
 
     public void Update()
