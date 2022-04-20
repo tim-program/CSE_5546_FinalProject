@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571322, b: 0.30692163, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1118,7 +1118,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 448204552}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  pointer: {fileID: 0}
+  pointer: {fileID: 935742915}
   sortOrder: 0
 --- !u!114 &416976117
 MonoBehaviour:
@@ -1292,6 +1292,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   sortOrder: 0
+--- !u!4 &448204557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 126d619cf4daa52469682f85c1378b4a, type: 3}
+  m_PrefabInstance: {fileID: 448204546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &448204558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448204554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b875ddf2669d24ca5a4e4e77c9406d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ovrInput: {fileID: 632965946}
+  wsiImage: {fileID: 1304349654}
+  wsiOffset: {fileID: 1570596344}
+  menuLock: {fileID: 2059376355}
+  window: {fileID: 1304349652}
 --- !u!1 &483746305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1756,6 +1778,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
+--- !u!114 &632965946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114043904411177872, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
+  m_PrefabInstance: {fileID: 632965945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1a9a1d119a5944aacfb87d1ec283a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &651504445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2593,7 +2626,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 448204558}
           m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
           m_MethodName: OnDragStarted
           m_Mode: 0
@@ -2609,10 +2642,26 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 448204558}
           m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
           m_MethodName: OnEndDrag
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 7
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 448204558}
+          m_TargetAssemblyTypeName: WSI_Interactions, Assembly-CSharp
+          m_MethodName: OnScroll
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3414,6 +3463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665397058}
+  - component: {fileID: 1665397059}
   m_Layer: 0
   m_Name: WSI
   m_TagString: Untagged
@@ -3436,6 +3486,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665397059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665397057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3abf242a49174f4448613ab36c944657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1570596343}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1695045522
 GameObject:
   m_ObjectHideFlags: 0
@@ -4381,6 +4445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleRender: {fileID: 2059376356}
+  wsiOffset: {fileID: 1570596344}
+  player: {fileID: 448204557}
 --- !u!120 &2059376356
 LineRenderer:
   m_ObjectHideFlags: 0
