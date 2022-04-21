@@ -1954,6 +1954,7 @@ MonoBehaviour:
   toggle: {fileID: 1021061087}
   debugText: {fileID: 383813930}
   quadObject: {fileID: 1803694088}
+  parentImage: {fileID: 1304349654}
   materials:
   - {fileID: 2100000, guid: 3038134a12394b64986e074b806ee0b5, type: 2}
   - {fileID: 2100000, guid: d300eef07a96ccb46851a2d5b877b460, type: 2}

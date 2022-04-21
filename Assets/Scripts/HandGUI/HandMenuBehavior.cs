@@ -7,24 +7,25 @@ public class HandMenuBehavior : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
 
-    [SerializeField] UnityEngine.UI.Image debugImage;
-    [SerializeField] UnityEngine.UI.Button debugButton;
+    [SerializeField] Image debugImage;
+    [SerializeField] Button debugButton;
 
-    [SerializeField] UnityEngine.UI.Text toggleText;
-    [SerializeField] UnityEngine.UI.Toggle toggle;
+    [SerializeField] Text toggleText;
+    [SerializeField] Toggle toggle;
 
-    [SerializeField] UnityEngine.UI.Text debugText;
+    [SerializeField] Text debugText;
 
     [SerializeField] GameObject quadObject;
-    private MeshRenderer quadObjectMR;
+    [SerializeField] private Image parentImage;
+    private MeshRenderer _quadObjectMr;
     [SerializeField] Material[] materials;
 
     private void Start()
     {
         if (quadObject != null)
         {
-            quadObjectMR = quadObject.GetComponent<MeshRenderer>();
-            quadObjectMR.enabled = false;
+            _quadObjectMr = quadObject.GetComponent<MeshRenderer>();
+            _quadObjectMr.enabled = false;
         }
     }
 
@@ -42,13 +43,14 @@ public class HandMenuBehavior : MonoBehaviour
 
     public void ChangeCaseNumber(int caseNum)
     {
-        UnityEngine.Debug.Log($"Choosing case: {caseNum}");
-        quadObjectMR.material = materials[caseNum];
+        Debug.Log($"Choosing case: {caseNum}");
+        _quadObjectMr.material = materials[caseNum];
+        parentImage.material = materials[caseNum];
     }
 
     public void ToggleChanged(Toggle change)
     {
-        UnityEngine.Debug.Log(change.isOn);
+        Debug.Log(change.isOn);
 
         if (quadObject != null)
         {
