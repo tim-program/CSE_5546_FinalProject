@@ -11,7 +11,7 @@ public class QuadScript : MonoBehaviour
     public float[] points;
     public float[][] pointss;
     int hitCount;
-    int maxPoints = 1024;
+    int maxPoints = 256;
     int currentArr = 0;
 
     private void Start()

@@ -38,6 +38,7 @@ public class WSI_Interactions : MonoBehaviour
 
     public void LoadWSI(string fileName)
     {
+        return;
         manager = new WSIManager(fileName, windowSizeX: (int) window.rect.width, windowSizeY: (int) window.rect.height);
         originX = (int) (manager.image.Height / 2);
         originY = (int) (manager.image.Width / 2);
@@ -48,7 +49,7 @@ public class WSI_Interactions : MonoBehaviour
     public void OnDragStarted(BaseEventData data)
     {
         PointerEventData pointer = (PointerEventData) data;
-
+        return;
         canvasCam = pointer.pressEventCamera;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(window, pointer.pressPosition, canvasCam,
             out initialTouchPos);
@@ -57,7 +58,7 @@ public class WSI_Interactions : MonoBehaviour
     public void OnDrag(BaseEventData data)
     {
         PointerEventData pointer = (PointerEventData) data;
-
+        return;
         Vector2 touchPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(window, pointer.position, canvasCam, out touchPos);
         Vector2 newPos = touchPos - initialTouchPos;
@@ -84,6 +85,14 @@ public class WSI_Interactions : MonoBehaviour
     {
     }
 
+    public void OnScroll(BaseEventData data)
+    {
+        PointerEventData pointer = (PointerEventData)data;
+        float scrollDeltaX = pointer.scrollDelta.x;
+        float scrollDeltaY = pointer.scrollDelta.y;
+        menuLock.GetCirclePoint(scrollDeltaX, scrollDeltaY);
+    }
+
     public void OnEndDrag()
     {
         //EnsureWindowInBounds();
@@ -106,7 +115,7 @@ public class WSI_Interactions : MonoBehaviour
 
     public void Update()
     {
-        OVRInput.Update();
+        //OVRInput.Update();
         DelayFunctions();
     }
 
