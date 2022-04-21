@@ -5,7 +5,7 @@ using OpenSlideNET;
 
 public class QuadScript : MonoBehaviour
 {
-    Material quadMaterial;
+    public Material quadMaterial;
     MeshRenderer quadMeshRenderer;
 
     public float[] points;
