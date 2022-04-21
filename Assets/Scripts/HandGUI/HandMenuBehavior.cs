@@ -46,6 +46,7 @@ public class HandMenuBehavior : MonoBehaviour
         Debug.Log($"Choosing case: {caseNum}");
         _quadObjectMr.material = materials[caseNum];
         quadObject.GetComponent<QuadScript>().quadMaterial = _quadObjectMr.material;
+        quadObject.GetComponent<QuadScript>().SetCurrentPoints(caseNum);
         parentImage.material = materials[caseNum];
     }
 

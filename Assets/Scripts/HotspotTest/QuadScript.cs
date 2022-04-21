@@ -9,8 +9,10 @@ public class QuadScript : MonoBehaviour
     MeshRenderer quadMeshRenderer;
 
     public float[] points;
+    public float[][] pointss;
     int hitCount;
     int maxPoints = 1024;
+    int currentArr = 0;
 
     private void Start()
     {
@@ -18,6 +20,11 @@ public class QuadScript : MonoBehaviour
         quadMaterial = quadMeshRenderer.material;
 
         points = new float[maxPoints * 3]; //32 allowed points on heat map
+        pointss = new float[3][];
+
+        pointss[0] = new float[maxPoints * 3];
+        pointss[1] = new float[maxPoints * 3];
+        pointss[2] = new float[maxPoints * 3];
         //send x coord, y coord, intensity
     }
 
@@ -33,14 +40,19 @@ public class QuadScript : MonoBehaviour
 
     public void AddHitPoint(float x, float y)
     {
-        points[hitCount * 3] = x;
-        points[hitCount * 3 + 1] = y;
-        points[hitCount * 3 + 2] = Random.Range(1f, 3f);
+        //points[hitCount * 3] = x;
+        //points[hitCount * 3 + 1] = y;
+        //points[hitCount * 3 + 2] = Random.Range(1f, 3f);
+
+        pointss[currentArr][hitCount * 3] = x;
+        pointss[currentArr][hitCount * 3 + 1] = y;
+        pointss[currentArr][hitCount * 3 + 2] = Random.Range(1f, 3f);
 
         hitCount++;
         hitCount %= maxPoints;
 
-        quadMaterial.SetFloatArray("_Hits", points);
+        //quadMaterial.SetFloatArray("_Hits", points);
+        quadMaterial.SetFloatArray("_Hits", pointss[currentArr]);
         quadMaterial.SetInt("_HitCount", hitCount);
     }
 
@@ -77,4 +89,8 @@ public class QuadScript : MonoBehaviour
         return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
     }
 
+    public void SetCurrentPoints(int val)
+    {
+        currentArr = val;
+    }
 }
