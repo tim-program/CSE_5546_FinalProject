@@ -22,7 +22,7 @@ public class RayCastScript : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(1f);
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit))
