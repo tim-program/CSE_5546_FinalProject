@@ -9,7 +9,8 @@ Our project helps by helping the pathologists keep track of where they looked by
 ## Just Run This...
 Here are some steps to quickly run and deploy this project:
 1. Make sure all the [dependencies](#dependencies) are installed/setup
-   1. This includes Getting a
+   1. This includes setting up the Oculus Quest in developer mode and installing Unity.
+      1. For overall help in getting set up with Oculus and Unity, try these docs: https://developer.oculus.com/documentation/unity/unity-gs-overview/ 
 2. Open the project in Unity
    1. Either by using Unity Hub to import the project or via Unity itself through its `File > Open...` dialog.
 3. When the project is finished loading, build the app using Android Build settings and run it on the connected headset using Unity's `Build and Run` option.
